@@ -33,7 +33,7 @@ const ManageTeams = () => {
     setLoading(true);
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get('http://localhost:5000/api/teams', { headers });
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/teams', { headers });
       setTeams(response.data);
     } catch (err) {
       console.error(err);
@@ -45,7 +45,7 @@ const ManageTeams = () => {
   const fetchUsers = async () => {
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get('http://localhost:5000/api/admin/users', { headers });
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/admin/users', { headers });
       setUsers(response.data);
       if (response.data.length > 0) {
         setCaptainId(response.data[0].id);
@@ -82,13 +82,13 @@ const ManageTeams = () => {
     try {
       const headers = { Authorization: `Bearer ${token}` };
       if (editingTeamId) {
-        const response = await axios.put(`http://localhost:5000/api/teams/${editingTeamId}`, {
+        const response = await axios.put(`https://smart-stadium-1nrv.onrender.com/api/teams/${editingTeamId}`, {
           name: teamName,
           captain_id: parseInt(captainId)
         }, { headers });
         setMessage(response.data.message);
       } else {
-        const response = await axios.post('http://localhost:5000/api/teams', {
+        const response = await axios.post('https://smart-stadium-1nrv.onrender.com/api/teams', {
           name: teamName,
           captain_id: parseInt(captainId)
         }, { headers });
@@ -107,7 +107,7 @@ const ManageTeams = () => {
     setError('');
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.delete(`http://localhost:5000/api/teams/${id}`, { headers });
+      const response = await axios.delete(`https://smart-stadium-1nrv.onrender.com/api/teams/${id}`, { headers });
       setMessage(response.data.message);
       if (selectedTeam?.id === id) {
         setSelectedTeam(null);
@@ -129,7 +129,7 @@ const ManageTeams = () => {
   const fetchPlayers = async (teamId) => {
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get(`http://localhost:5000/api/teams/${teamId}/players`, { headers });
+      const response = await axios.get(`https://smart-stadium-1nrv.onrender.com/api/teams/${teamId}/players`, { headers });
       setPlayers(response.data);
     } catch (err) {
       console.error(err);
@@ -148,7 +148,7 @@ const ManageTeams = () => {
 
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.post(`http://localhost:5000/api/teams/${selectedTeam.id}/players`, {
+      const response = await axios.post(`https://smart-stadium-1nrv.onrender.com/api/teams/${selectedTeam.id}/players`, {
         name: playerName,
         position: playerPosition,
         age: parseInt(playerAge)
@@ -168,7 +168,7 @@ const ManageTeams = () => {
     if (!window.confirm("Are you sure you want to remove this player?")) return;
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      await axios.delete(`http://localhost:5000/api/players/${playerId}`, { headers });
+      await axios.delete(`https://smart-stadium-1nrv.onrender.com/api/players/${playerId}`, { headers });
       fetchPlayers(selectedTeam.id);
     } catch (err) {
       setPlayerErr('Failed to delete player.');

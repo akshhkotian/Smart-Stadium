@@ -25,7 +25,7 @@ const TournamentsList = () => {
   const fetchTournaments = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/tournaments', {
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/tournaments', {
         params: { search, sport_type: sportType, status }
       });
       setTournaments(response.data);
@@ -39,7 +39,7 @@ const TournamentsList = () => {
   const fetchMyTeams = async () => {
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get('http://localhost:5000/api/teams', { headers });
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/teams', { headers });
       // Filter teams where current user is the captain
       const captainedTeams = response.data.filter(t => t.captain_id === user.id);
       setMyTeams(captainedTeams);
@@ -58,7 +58,7 @@ const TournamentsList = () => {
     
     // Fetch registered teams for this tournament
     try {
-      const response = await axios.get(`http://localhost:5000/api/tournaments/${tournament.id}/teams`);
+      const response = await axios.get(`https://smart-stadium-1nrv.onrender.com/api/tournaments/${tournament.id}/teams`);
       setRegisteredTeams(response.data);
     } catch (err) {
       console.error("Error fetching registered teams:", err);
@@ -77,14 +77,14 @@ const TournamentsList = () => {
 
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.post(`http://localhost:5000/api/tournaments/${selectedTournament.id}/register`, {
+      const response = await axios.post(`https://smart-stadium-1nrv.onrender.com/api/tournaments/${selectedTournament.id}/register`, {
         team_id: selectedTeamId
       }, { headers });
 
       setMessage(response.data.message);
       
       // Refresh registered teams list
-      const teamsResponse = await axios.get(`http://localhost:5000/api/tournaments/${selectedTournament.id}/teams`);
+      const teamsResponse = await axios.get(`https://smart-stadium-1nrv.onrender.com/api/tournaments/${selectedTournament.id}/teams`);
       setRegisteredTeams(teamsResponse.data);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to register team.');

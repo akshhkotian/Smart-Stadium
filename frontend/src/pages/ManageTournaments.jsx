@@ -25,7 +25,7 @@ const ManageTournaments = () => {
   const fetchTournaments = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/tournaments');
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/tournaments');
       setTournaments(response.data);
     } catch (err) {
       console.error(err);
@@ -78,11 +78,11 @@ const ManageTournaments = () => {
       const headers = { Authorization: `Bearer ${token}` };
       if (editingId) {
         // Update Tournament
-        const response = await axios.put(`http://localhost:5000/api/tournaments/${editingId}`, payload, { headers });
+        const response = await axios.put(`https://smart-stadium-1nrv.onrender.com/api/tournaments/${editingId}`, payload, { headers });
         setMessage(response.data.message);
       } else {
         // Create Tournament
-        const response = await axios.post('http://localhost:5000/api/tournaments', payload, { headers });
+        const response = await axios.post('https://smart-stadium-1nrv.onrender.com/api/tournaments', payload, { headers });
         setMessage(response.data.message);
       }
       clearForm();
@@ -98,7 +98,7 @@ const ManageTournaments = () => {
     setError('');
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.delete(`http://localhost:5000/api/tournaments/${id}`, { headers });
+      const response = await axios.delete(`https://smart-stadium-1nrv.onrender.com/api/tournaments/${id}`, { headers });
       setMessage(response.data.message);
       fetchTournaments();
     } catch (err) {

@@ -18,7 +18,7 @@ const ManageUsers = () => {
     setLoading(true);
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get('http://localhost:5000/api/admin/users', { headers });
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/admin/users', { headers });
       setUsers(response.data);
     } catch (err) {
       console.error(err);
@@ -43,7 +43,7 @@ const ManageUsers = () => {
 
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.put('http://localhost:5000/api/admin/users', {
+      const response = await axios.put('https://smart-stadium-1nrv.onrender.com/api/admin/users', {
         id: user.id,
         role: newRole
       }, { headers });
@@ -68,7 +68,7 @@ const ManageUsers = () => {
 
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.delete('http://localhost:5000/api/admin/users', {
+      const response = await axios.delete('https://smart-stadium-1nrv.onrender.com/api/admin/users', {
         params: { id: userId },
         headers
       });

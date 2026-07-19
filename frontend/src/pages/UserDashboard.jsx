@@ -21,10 +21,10 @@ const UserDashboard = () => {
     try {
       const headers = { Authorization: `Bearer ${token}` };
       
-      const statsRes = await axios.get('http://localhost:5000/api/reports/dashboard-stats', { headers });
+      const statsRes = await axios.get('https://smart-stadium-1nrv.onrender.com/api/reports/dashboard-stats', { headers });
       setStats(statsRes.data);
 
-      const announceRes = await axios.get('http://localhost:5000/api/announcements', { headers });
+      const announceRes = await axios.get('https://smart-stadium-1nrv.onrender.com/api/announcements', { headers });
       setAnnouncements(announceRes.data.slice(0, 3)); // show top 3
     } catch (err) {
       console.error("Error fetching user dashboard data:", err);
@@ -45,7 +45,7 @@ const UserDashboard = () => {
 
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      await axios.post('http://localhost:5000/api/feedback', { message: feedbackMsg }, { headers });
+      await axios.post('https://smart-stadium-1nrv.onrender.com/api/feedback', { message: feedbackMsg }, { headers });
       setFeedbackSuccess('Thank you! Your feedback has been sent.');
       setFeedbackMsg('');
     } catch (err) {

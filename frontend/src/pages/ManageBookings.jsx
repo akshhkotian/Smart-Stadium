@@ -18,7 +18,7 @@ const ManageBookings = () => {
     setLoading(true);
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get('http://localhost:5000/api/bookings', { headers });
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/bookings', { headers });
       setBookings(response.data);
     } catch (err) {
       console.error(err);
@@ -34,7 +34,7 @@ const ManageBookings = () => {
 
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.put(`http://localhost:5000/api/bookings/${bookingId}`, {
+      const response = await axios.put(`https://smart-stadium-1nrv.onrender.com/api/bookings/${bookingId}`, {
         status: newStatus
       }, { headers });
 

@@ -17,7 +17,7 @@ const Leaderboard = () => {
 
   const fetchTournaments = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/tournaments');
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/tournaments');
       setTournaments(response.data);
       // Select the first tournament if available to make leaderboard look filled
       if (response.data.length > 0) {
@@ -31,7 +31,7 @@ const Leaderboard = () => {
   const fetchLeaderboard = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/leaderboard', {
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/leaderboard', {
         params: { tournament_id: selectedTournamentId }
       });
       setStandings(response.data);

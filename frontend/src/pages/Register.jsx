@@ -35,7 +35,7 @@ const Register = () => {
 
     setLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/auth/register', {
+      await axios.post('https://smart-stadium-1nrv.onrender.com/api/auth/register', {
         username,
         email,
         password,

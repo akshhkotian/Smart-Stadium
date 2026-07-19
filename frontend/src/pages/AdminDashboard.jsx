@@ -36,7 +36,7 @@ const AdminDashboard = () => {
     setLoading(true);
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get('http://localhost:5000/api/reports/dashboard-stats', { headers });
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/reports/dashboard-stats', { headers });
       setStats(response.data);
     } catch (err) {
       console.error("Error fetching admin stats:", err);

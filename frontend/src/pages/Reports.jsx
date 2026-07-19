@@ -18,13 +18,13 @@ const Reports = () => {
     try {
       const headers = { Authorization: `Bearer ${token}` };
       
-      const tourRes = await axios.get('http://localhost:5000/api/tournaments');
+      const tourRes = await axios.get('https://smart-stadium-1nrv.onrender.com/api/tournaments');
       setTournaments(tourRes.data);
 
-      const bookingRes = await axios.get('http://localhost:5000/api/bookings', { headers });
+      const bookingRes = await axios.get('https://smart-stadium-1nrv.onrender.com/api/bookings', { headers });
       setBookings(bookingRes.data);
 
-      const feedbackRes = await axios.get('http://localhost:5000/api/feedback', { headers });
+      const feedbackRes = await axios.get('https://smart-stadium-1nrv.onrender.com/api/feedback', { headers });
       setFeedbacks(feedbackRes.data);
     } catch (err) {
       console.error("Error fetching report data:", err);

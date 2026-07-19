@@ -21,7 +21,7 @@ const ManageAnnouncements = () => {
     setLoading(true);
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get('http://localhost:5000/api/announcements', { headers });
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/announcements', { headers });
       setAnnouncements(response.data);
     } catch (err) {
       console.error(err);
@@ -42,7 +42,7 @@ const ManageAnnouncements = () => {
 
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.post('http://localhost:5000/api/announcements', {
+      const response = await axios.post('https://smart-stadium-1nrv.onrender.com/api/announcements', {
         title,
         content
       }, { headers });
@@ -63,7 +63,7 @@ const ManageAnnouncements = () => {
 
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.delete(`http://localhost:5000/api/announcements/${id}`, { headers });
+      const response = await axios.delete(`https://smart-stadium-1nrv.onrender.com/api/announcements/${id}`, { headers });
       setMessage(response.data.message);
       fetchAnnouncements();
     } catch (err) {

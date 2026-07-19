@@ -22,7 +22,7 @@ const Feedback = () => {
     setSubmitting(true);
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.post('http://localhost:5000/api/feedback', {
+      const response = await axios.post('https://smart-stadium-1nrv.onrender.com/api/feedback', {
         message: feedback
       }, { headers });
 

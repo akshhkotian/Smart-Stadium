@@ -23,7 +23,7 @@ const BookStadium = () => {
     setError('');
     setSelectedSlot(null);
     try {
-      const response = await axios.get(`http://localhost:5000/api/bookings/availability`, {
+      const response = await axios.get(`https://smart-stadium-1nrv.onrender.com/api/bookings/availability`, {
         params: { date }
       });
       setSlots(response.data);
@@ -58,7 +58,7 @@ const BookStadium = () => {
     setSubmitting(true);
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.post('http://localhost:5000/api/bookings', {
+      const response = await axios.post('https://smart-stadium-1nrv.onrender.com/api/bookings', {
         booking_date: date,
         time_slot: selectedSlot,
         purpose

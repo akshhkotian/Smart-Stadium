@@ -15,7 +15,7 @@ const Schedules = () => {
 
   const fetchTournaments = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/tournaments');
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/tournaments');
       setTournaments(response.data);
     } catch (err) {
       console.error("Error fetching tournaments:", err);
@@ -25,7 +25,7 @@ const Schedules = () => {
   const fetchMatches = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/matches', {
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/matches', {
         params: {
           tournament_id: selectedTournamentId,
           status: selectedStatus

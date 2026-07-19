@@ -14,7 +14,7 @@ const BookingHistory = () => {
     setLoading(true);
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get('http://localhost:5000/api/bookings', { headers });
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/bookings', { headers });
       setBookings(response.data);
     } catch (err) {
       console.error("Error fetching bookings:", err);

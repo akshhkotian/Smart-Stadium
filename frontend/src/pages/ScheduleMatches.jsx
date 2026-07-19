@@ -40,7 +40,7 @@ const ScheduleMatches = () => {
 
   const fetchTournaments = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/tournaments');
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/tournaments');
       setTournaments(response.data);
     } catch (err) {
       console.error(err);
@@ -49,7 +49,7 @@ const ScheduleMatches = () => {
 
   const fetchRegisteredTeams = async (tourId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/tournaments/${tourId}/teams`);
+      const response = await axios.get(`https://smart-stadium-1nrv.onrender.com/api/tournaments/${tourId}/teams`);
       setTeams(response.data);
       if (response.data.length >= 2) {
         setTeam1Id(response.data[0].id);
@@ -66,7 +66,7 @@ const ScheduleMatches = () => {
   const fetchMatches = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/matches');
+      const response = await axios.get('https://smart-stadium-1nrv.onrender.com/api/matches');
       setMatches(response.data);
     } catch (err) {
       console.error(err);
@@ -92,7 +92,7 @@ const ScheduleMatches = () => {
 
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.post('http://localhost:5000/api/matches', {
+      const response = await axios.post('https://smart-stadium-1nrv.onrender.com/api/matches', {
         tournament_id: parseInt(selectedTournamentId),
         team1_id: parseInt(team1Id),
         team2_id: parseInt(team2Id),
@@ -121,7 +121,7 @@ const ScheduleMatches = () => {
 
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.put(`http://localhost:5000/api/matches/${selectedMatch.id}/score`, {
+      const response = await axios.put(`https://smart-stadium-1nrv.onrender.com/api/matches/${selectedMatch.id}/score`, {
         score1: parseInt(score1),
         score2: parseInt(score2),
         status: status
